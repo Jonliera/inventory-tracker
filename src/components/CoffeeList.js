@@ -1,12 +1,10 @@
 import React from "react";
-import Header from "./Header";
+import Coffee from "./Coffee";
 
-const App = () => {
+const CoffeeList = () => {
   return (
     <React.Fragment>
-      <Header />
+      <Coffee />
     </React.Fragment>
   );
 };
-
-export default App;
