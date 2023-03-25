@@ -23,6 +23,7 @@ const CoffeeList = (props) => {
 
 CoffeeList.propTypes = {
   coffeeList: PropTypes.array,
+  onCoffeeSelection: PropTypes.func,
 };
 
 export default CoffeeList;
