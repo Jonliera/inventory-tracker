@@ -3,12 +3,10 @@ import Coffee from "./Coffee";
 
 const CoffeeList = () => {
   return (
-    <Coffee
-      name="Coffee Name"
-      origin="Coffee Origin"
-      price="Coffee Price"
-      roast="Coffee Roast"
-    />
+    <React.Fragment>
+      <Coffee name="Coffee 1" origin="Brazil" price="3" roast="Light" />
+      <Coffee name="Coffee 2" origin="Colombia" price="4" roast="Medium" />
+    </React.Fragment>
   );
 };
 
