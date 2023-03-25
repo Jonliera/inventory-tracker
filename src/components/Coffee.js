@@ -13,4 +13,11 @@ const Coffee = (props) => {
   );
 };
 
+Coffee.propTypes = {
+  name: PropTyoes.string,
+  origin: PropTyoes.string,
+  price: PropTyoes.string,
+  roast: PropTyoes.string,
+};
+
 export default Coffee;
