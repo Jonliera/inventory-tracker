@@ -24,10 +24,22 @@ class CoffeeControl extends React.Component {
     }));
   };
 
+  handleChangingSelectedCoffee = (id) => {
+    const selectedCoffee = this.state.mainCoffeeList.filter(
+      (coffee) => coffee.id === id
+    )[0];
+    this.setState({ selectedCoffee: selectedCoffee });
+  };
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.formVisibleOnPage) {
+    if (this.state.selectedCoffee != null) {
+      currentlyVisibleState = (
+        <CoffeeDetail coffee={this.state.selectedCoffee} />
+      );
+      buttonText = "Return to Coffee List";
+    } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = (
         <NewCoffeeForm
           onNewCoffeeCreation={this.handledAddingNewCoffeeToList}
@@ -36,10 +48,14 @@ class CoffeeControl extends React.Component {
       buttonText = "Return to Coffee List";
     } else {
       currentlyVisibleState = (
-        <CoffeeList coffeeList={this.state.mainCoffeeList} />
+        <CoffeeList
+          coffeeList={this.state.mainCoffeeList}
+          onCoffeeSelection={this.handleChangingSelectedCoffee}
+        />
       );
       buttonText = "Add Coffee";
     }
+
     return (
       <React.Fragment>
         {currentlyVisibleState}

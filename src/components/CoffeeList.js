@@ -6,13 +6,15 @@ const CoffeeList = (props) => {
   return (
     <React.Fragment>
       <hr />
-      {props.coffeeList.map((coffee, index) => (
+      {props.coffeeList.map((coffee) => (
         <Coffee
+          whenCoffeeClicked={props.onCoffeeSelection}
           name={coffee.name}
           origin={coffee.origin}
           price={coffee.price}
           roast={coffee.roast}
-          key={index}
+          id={coffee.id}
+          key={coffee.id}
         />
       ))}
     </React.Fragment>
