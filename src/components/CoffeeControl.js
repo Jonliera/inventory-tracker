@@ -11,7 +11,20 @@ class CoffeeControl extends React.Component {
   }
 
   render() {
-    return <React.Fragment></React.Fragment>;
+    let currentlyVisibleState = null;
+    let addCoffeeButton = null;
+    if (this.state.formVisibleOnPage) {
+      currentlyVisibleState = <NewCoffeeForm />;
+    } else {
+      currentlyVisibleState = <CoffeeList />;
+      addCoffeeButton = <button onClick={this.handleClick}>Add Coffee</button>;
+    }
+    return (
+      <React.Fragment>
+        {currentlyVisibleState}
+        {addCoffeeButton}
+      </React.Fragment>
+    );
   }
 }
 
