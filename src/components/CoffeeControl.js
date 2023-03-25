@@ -19,9 +19,16 @@ class CoffeeControl extends React.Component {
   };
 
   handleClick = () => {
-    this.setState((prevState) => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage,
-    }));
+    if (this.state.selectedCoffee != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedCoffee: null,
+      });
+    } else {
+      this.setState((prevState) => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage,
+      }));
+    }
   };
 
   handleChangingSelectedCoffee = (id) => {
@@ -36,7 +43,10 @@ class CoffeeControl extends React.Component {
     let buttonText = null;
     if (this.state.selectedCoffee != null) {
       currentlyVisibleState = (
-        <CoffeeDetail coffee={this.state.selectedCoffee} />
+        <CoffeeDetail
+          coffee={this.state.selectedCoffee}
+          onClickingDelete={this.handleDeletingCoffee}
+        />
       );
       buttonText = "Return to Coffee List";
     } else if (this.state.formVisibleOnPage) {
