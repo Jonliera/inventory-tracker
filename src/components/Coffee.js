@@ -14,10 +14,10 @@ const Coffee = (props) => {
 };
 
 Coffee.propTypes = {
-  name: PropTyoes.string,
-  origin: PropTyoes.string,
-  price: PropTyoes.string,
-  roast: PropTyoes.string,
+  name: PropTyoes.string.isRequired,
+  origin: PropTyoes.string.isRequired,
+  price: PropTyoes.string.isRequired,
+  roast: PropTyoes.string.isRequired,
 };
 
 export default Coffee;
