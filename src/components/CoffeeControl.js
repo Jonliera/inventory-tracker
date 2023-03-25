@@ -7,8 +7,15 @@ class CoffeeControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
+      mainCoffeeList: [],
     };
   }
+
+  handledAddingNewCoffeeToList = (newCoffee) => {
+    const newMainCoffeeList = this.state.mainCoffeeList.concat(newCoffee);
+    this.setState({ mainCoffeeList: newMainCoffeeList });
+    this.setState({ formVisibleOnPage: false });
+  };
 
   handleClick = () => {
     this.setState((prevState) => ({
@@ -23,7 +30,9 @@ class CoffeeControl extends React.Component {
       currentlyVisibleState = <NewCoffeeForm />;
       buttonText = "Return to Coffee List";
     } else {
-      currentlyVisibleState = <CoffeeList />;
+      currentlyVisibleState = (
+        <CoffeeList coffeeList={this.state.mainCoffeeList} />
+      );
       buttonText = "Add Coffee";
     }
     return (
