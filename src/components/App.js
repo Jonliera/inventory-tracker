@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "./Header";
-import CoffeeList from "./CoffeeList";
+import CoffeeControl from "./CoffeeControl";
 
 const App = () => {
   return (
     <React.Fragment>
       <Header />
-      <CoffeeList />
+      <CoffeeControl />
     </React.Fragment>
   );
 };
