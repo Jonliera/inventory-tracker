@@ -25,9 +25,16 @@ const mainCoffeeList = [
 const CoffeeList = () => {
   return (
     <React.Fragment>
-      <Coffee name="Coffee 1" origin="Brazil" price="3" roast="Light" />
-      <Coffee name="Coffee 2" origin="Colombia" price="4" roast="Medium" />
-      <Coffee name="Coffee 3" origin="Mexico" price="5" roast="Dark" />
+      <hr />
+      {mainCoffeeList.map((coffee, index) => (
+        <Coffee
+          name={coffee.name}
+          origin={coffee.origin}
+          price={coffee.price}
+          roast={coffee.roast}
+          key={index}
+        />
+      ))}
     </React.Fragment>
   );
 };
