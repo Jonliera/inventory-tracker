@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const NewCoffeeForm = (props) => {
   return (
@@ -12,6 +13,10 @@ const NewCoffeeForm = (props) => {
       </form>
     </React.Fragment>
   );
+};
+
+NewCoffeeForm.propTypes = {
+  onNewCoffeeCreation: PropTypes.func,
 };
 
 export default NewCoffeeForm;

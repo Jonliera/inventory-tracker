@@ -27,7 +27,11 @@ class CoffeeControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewCoffeeForm />;
+      currentlyVisibleState = (
+        <NewCoffeeForm
+          onNewCoffeeCreation={this.handledAddingNewCoffeeToList}
+        />
+      );
       buttonText = "Return to Coffee List";
     } else {
       currentlyVisibleState = (
