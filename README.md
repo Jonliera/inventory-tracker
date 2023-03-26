@@ -49,7 +49,7 @@ Jonathan Liera February 2023
 #### Diagram
 
 1. This diagram shows how the application is planned out from the beginning. It shows all the components that are being used.
-   ![component diagram image](./src/components/img/diagram.png)
+   ![component diagram image](/src/img/diagram.png)
 
 ## Known Bugs
 
