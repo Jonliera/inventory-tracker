@@ -1,6 +1,8 @@
 import React from "react";
 import NewCoffeeForm from "./NewCoffeeForm";
 import CoffeeList from "./CoffeeList";
+import CoffeeDetail from "./CoffeeDetail";
+import EditCoffeeForm from "./EditCoffeeForm";
 
 class CoffeeControl extends React.Component {
   constructor(props) {
@@ -9,6 +11,7 @@ class CoffeeControl extends React.Component {
       formVisibleOnPage: false,
       mainCoffeeList: [],
       selectedCoffee: null,
+      editing: false,
     };
   }
 
@@ -23,6 +26,7 @@ class CoffeeControl extends React.Component {
       this.setState({
         formVisibleOnPage: false,
         selectedCoffee: null,
+        editing: false,
       });
     } else {
       this.setState((prevState) => ({
@@ -38,16 +42,48 @@ class CoffeeControl extends React.Component {
     this.setState({ selectedCoffee: selectedCoffee });
   };
 
+  handleDeletingCoffee = (id) => {
+    const newMainCoffeeList = this.state.mainCoffeeList.filter(
+      (coffee) => coffee.id !== id
+    );
+    this.setState({
+      mainCoffeeList: newMainCoffeeList,
+      selectedCoffee: null,
+    });
+  };
+
+  handleEditClick = () => {
+    this.setState({ editing: true });
+  };
+
+  handleEditingCoffeeInList = (coffeeToEdit) => {
+    const editedMainCoffeeList = this.state.mainCoffeeList
+      .filter((coffee) => coffee.id !== this.state.selectedCoffee.id)
+      .concat(coffeeToEdit);
+    this.setState({
+      mainCoffeeList: editedMainCoffeeList,
+      editing: false,
+      selectedCoffee: null,
+    });
+  };
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.state.selectedCoffee != null) {
+    if (this.state.editing) {
+      currentlyVisibleState = (
+        <EditCoffeeForm coffee={this.state.selectedCoffee} />
+      );
+      buttonText = "Return to Coffee List";
+    } else if (this.state.selectedCoffee != null) {
       currentlyVisibleState = (
         <CoffeeDetail
           coffee={this.state.selectedCoffee}
           onClickingDelete={this.handleDeletingCoffee}
+          onClickingEdit={this.handleEditClick}
         />
       );
+
       buttonText = "Return to Coffee List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = (
