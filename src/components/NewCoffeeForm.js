@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { v4 } from "uuid";
+import ReusableForm from "./ReusableForm";
 
 const NewCoffeeForm = (props) => {
   function handleNewCoffeeFormSubmission(event) {
@@ -16,13 +17,10 @@ const NewCoffeeForm = (props) => {
 
   return (
     <React.Fragment>
-      <form onSubmit={handleNewCoffeeFormSubmission}>
-        <input type="text" name="name" placeholder="Coffee Name" />
-        <input type="text" name="origin" placeholder="Coffee Origin" />
-        <input type="text" name="price" placeholder="Coffee Price" />
-        <input type="text" name="roast" placeholder="Coffee Roast" />
-        <button type="submit">Add</button>
-      </form>
+      <ReusableForm
+        formSubmissionHandler={handleNewCoffeeFormSubmission}
+        buttonText="Add Coffee"
+      />
     </React.Fragment>
   );
 };
