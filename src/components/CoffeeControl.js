@@ -72,8 +72,12 @@ class CoffeeControl extends React.Component {
     let buttonText = null;
     if (this.state.editing) {
       currentlyVisibleState = (
-        <EditCoffeeForm coffee={this.state.selectedCoffee} />
+        <EditCoffeeForm
+          coffee={this.state.selectedCoffee}
+          onEditCoffee={this.handleEditingCoffeeInList}
+        />
       );
+
       buttonText = "Return to Coffee List";
     } else if (this.state.selectedCoffee != null) {
       currentlyVisibleState = (
